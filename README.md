@@ -2,8 +2,7 @@
 
 ##Analysis of Bikeshare Data##
 
-### Description
-Describe what your project is about and what it does
+The project is about the creation of a python file to help with the analysis of Bikeshare data in Washington, Chicago and New York City.
 
 ### Files used
 Include the files used
