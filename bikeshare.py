@@ -17,22 +17,19 @@ def get_filters():
     """
     print('\nHello! Let\'s explore some US bikeshare data!\n')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = input("Please specify which city you want to analyze (Chicago, New York City or Washington): ")
-    city = city.lower()
+    city = input("Please specify which city you want to analyze (Chicago, New York City or Washington): ").lower()
     while city not in ['chicago', 'new york city', 'washington']:
         city = input("We do not recognize the city you entered, please enter either Chicago, New York City or Washington: ")
         city = city.lower()
-    
+
     # TO DO: get user input for month (all, january, february, ... , june)
-    month = input("Please specify which month you want to analyze (January, February, March, April, May, June or All): ")
-    month = month.lower()
+    month = input("Please specify which month you want to analyze (January, February, March, April, May, June or All): ").lower()
     while month not in ['january', 'february', 'march', 'april', 'may', 'june', 'all']:
         month = input("We do not recognize the month you entered, please enter either January, February, March, April, May, June or All: ")
         month = month.lower()
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input("Please specify which day you want to analyze (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All): ")
-    day = day.lower()
+    day = input("Please specify which day you want to analyze (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All): ").lower()
     while day not in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']:
         day = input("We do not recognize the day you entered, please enter either Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All: ")
         day = day.lower()
@@ -53,25 +50,25 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.read_csv(CITY_DATA[city])
-    
+
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    
+
     if month != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
         df = df[df['month'] == month]
-    
+
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
-    
+
     return df
 
 
 def raw_data(df):
     """Displays raw data."""
-    
+
     answer = input('\nDo you want to display raw data (yes or no): ')
     answer = answer.lower()
     x = 0
@@ -96,17 +93,17 @@ def time_stats(df):
     month_mode = df['month'].mode()[0]
     months = ['january', 'february', 'march', 'april', 'may', 'june']
     month_name = months[month_mode - 1].capitalize()
-    print('The most common month is {}'.format(month_name)) 
+    print('The most common month is {}'.format(month_name))
 
     # TO DO: display the most common day of week
     day_mode = df['day_of_week'].mode()[0]
-    print('The most common day is {}'.format(day_mode)) 
-    
+    print('The most common day is {}'.format(day_mode))
+
     # TO DO: display the most common start hour
     hours = df['Start Time'].dt.hour
     hour_mode = hours.mode()[0]
-    print('The most common start hour is {}'.format(hour_mode)) 
-    
+    print('The most common start hour is {}'.format(hour_mode))
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -173,7 +170,7 @@ def user_stats(city, df):
         print('The count of females is {} and the count of males {}'.format(num_female, num_male))
     else:
         print('There is no gender data for Washington')
-        
+
     # TO DO: Display earliest, most recent, and most common year of birth
     if city == 'chicago' or city == 'new york city':
         earliest_yob = df['Birth Year'].min()
@@ -184,7 +181,7 @@ def user_stats(city, df):
         print('The most common year of birth (or one of them) is {}'.format(int(most_common_yob)))
     else:
         print('There is no year of birth data for Washington')
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -193,7 +190,7 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        
+
         raw_data(df)
         time_stats(df)
         station_stats(df)
