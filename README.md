@@ -2,7 +2,7 @@
 
 ### Analysis of Bikeshare Data
 
-The project is about the creation of a python file to help with the analysis of Bikeshare data in Washington, Chicago and New York City.
+The project is about the creation of a python file to help with the analysis of Bikeshare data in Washington, Chicago and New York City. The data encompasses the period from January to June 2017.
 
 #### Files used:
 * bikeshare.py
