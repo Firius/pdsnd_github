@@ -65,7 +65,6 @@ def load_data(city, month, day):
 
     return df
 
-
 def raw_data(df):
     """Displays raw data."""
 
@@ -107,7 +106,6 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -130,7 +128,6 @@ def station_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -148,7 +145,6 @@ def trip_duration_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def user_stats(city, df):
     """Displays statistics on bikeshare users."""
 
@@ -160,7 +156,6 @@ def user_stats(city, df):
     num_subscriber = count_user_type['Start Time']['Subscriber']
     num_customer = count_user_type['Start Time']['Customer']
     print('The count of subscribers is {} and the count of customers {}'.format(num_subscriber, num_customer))
-
 
     # TO DO: Display counts of gender
     if city == 'chicago' or city == 'new york city':
@@ -185,7 +180,6 @@ def user_stats(city, df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def main():
     while True:
         city, month, day = get_filters()
@@ -200,7 +194,6 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-
 
 if __name__ == "__main__":
 	main()
